@@ -12,20 +12,20 @@
 
     <script>
 
-        var padString = function (userName, userNumber, userSymbol) {
+        var padString = function (userName, userNumber, userSymbol, userFlag = false) {
 
-            if (userNumber > userName.length) {
-                for (var i = 0; i <= userNumber - userName.length; i++) {
-                    userName += userSymbol;
-                }
-                return userName;
-            } else {
-                return userName;
+            if (userNumber < userName.length) return userName;
+
+            var accSymbol = "";
+
+            for (var i = 0; i < userNumber - userName.length; i++) {
+                accSymbol += userSymbol;
             }
-
+            
+            return userFlag ? accSymbol + userName : userName + accSymbol;
         }
 
-        padString("Oleg", 6, "*");
+        var result = padString("Ivan", 6, "*", true);
 
     </script>
 
